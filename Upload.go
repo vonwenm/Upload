@@ -54,7 +54,7 @@ func Upload(rw http.ResponseWriter, req *http.Request) {
 
 func SayDate(rw http.ResponseWriter, req *http.Request) {
 	timeNow := time.Now()
-	fmt.Fprintf(rw, "Time now%s", timeNow.Format(time.Kitchen))
+	fmt.Fprintf(rw, "Time now %s", timeNow.Format(time.Kitchen))
 
 }
 
