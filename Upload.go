@@ -48,7 +48,7 @@ func Upload(rw http.ResponseWriter, req *http.Request) {
 	}
 	timeNow := time.Now()
 	fmt.Fprintf(rw, "Successfull uploading file: %s\n", handler.Filename)
-	fmt.Fprintf(rw, "Time : %s", timeNow.Format(time.Kitchen))
+	fmt.Fprintf(rw, "Time : %s\n", timeNow.Format(time.Kitchen))
 	fmt.Println("Successfull upload ", handler.Filename)
 }
 
