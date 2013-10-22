@@ -65,12 +65,13 @@ func SayName(rw http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-
+	fmt.Println("Server started")
+	host := "localhost:4000"
 	http.HandleFunc("/name/", SayName)
 	http.HandleFunc("/date/", SayDate)
 	http.HandleFunc("/upload/", Upload)
 	http.Handle("/file/", http.StripPrefix("/file", http.FileServer(http.Dir("/Users/Christopher/Documents/Programmering/go"))))
-	err := http.ListenAndServe("localhost:4000", nil)
+	err := http.ListenAndServe(host, nil)
 
 	if err != nil {
 		log.Fatal("Error ListenAndServe", err)
