@@ -25,6 +25,10 @@ import (
 	"time"
 )
 
+func fileserve(rw http.ResponseWriter, req *http.Request) {
+	http.ServeFile(rw, req, "/Users/Christopher/Documents/Programmering/go/libs/src/github.com/christopherL91/Upload/Upload.html")
+}
+
 func Upload(rw http.ResponseWriter, req *http.Request) {
 
 	fmt.Println("Incoming message...")
@@ -61,16 +65,17 @@ func SayDate(rw http.ResponseWriter, req *http.Request) {
 func SayName(rw http.ResponseWriter, req *http.Request) {
 
 	remPartOfURL := req.URL.Path[len("/name/"):]
-	fmt.Fprintf(rw, "Hello %s", remPartOfURL)
+	fmt.Fprintf(rw, "Hello %s", remPasrtOfURL)
 }
 
 func main() {
 	fmt.Println("Server started")
-	host := "localhost:4000"
+	host := ":4000"
 	http.HandleFunc("/name/", SayName)
 	http.HandleFunc("/date/", SayDate)
 	http.HandleFunc("/upload/", Upload)
-	http.Handle("/file/", http.StripPrefix("/file", http.FileServer(http.Dir("/Users/Christopher/Documents/Programmering/go"))))
+	http.HandleFunc("/html/", fileserve)
+	http.Handle("/look/", http.StripPrefix("/file", http.FileServer(http.Dir("/Users/Christopher/Documents/Programmering/go"))))
 	err := http.ListenAndServe(host, nil)
 
 	if err != nil {
