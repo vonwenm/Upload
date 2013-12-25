@@ -65,7 +65,7 @@ func SayDate(rw http.ResponseWriter, req *http.Request) {
 func SayName(rw http.ResponseWriter, req *http.Request) {
 
 	remPartOfURL := req.URL.Path[len("/name/"):]
-	fmt.Fprintf(rw, "Hello %s", remPasrtOfURL)
+	fmt.Fprintf(rw, "Hello %s", remPartOfURL)
 }
 
 func main() {
